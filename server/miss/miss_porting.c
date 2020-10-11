@@ -248,7 +248,7 @@ int miss_rpc_send(void *rpc_id, const char *method, const char *params)
 	message_t msg;
     /********message body********/
 	msg_init(&msg);
-	msg.arg_in.cat = msg_id;
+	msg.uid = msg_id;
 	msg.message = MSG_MIIO_RPC_SEND;
 	msg.sender = SERVER_MISS;
 	msg.arg = params;
@@ -268,7 +268,7 @@ int miss_statistics(miss_session_t *session, void *data, int len)
 	message_t msg;
     /********message body********/
 	msg_init(&msg);
-	msg.arg_in.cat = msg_id;
+	msg.uid = msg_id;
 	msg.message = MSG_MIIO_RPC_REPORT_SEND;
 	msg.sender = SERVER_MISS;
 	msg.arg = data;
