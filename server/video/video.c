@@ -747,6 +747,7 @@ exit:
 	para_set = 0;
 	info.task.func = &task_default;
 	info.msg_lock = 0;
+	msg_free(&info.task.msg);
 	return;
 }
 /*
@@ -795,6 +796,7 @@ exit:
 	para_set = 0;
 	info.task.func = &task_default;
 	info.msg_lock = 0;
+	msg_free(&info.task.msg);
 	return;
 }
 /*
@@ -826,6 +828,7 @@ static void task_start(void)
 exit:
 	info.task.func = &task_default;
 	info.msg_lock = 0;
+	msg_free(&info.task.msg);
 	return;
 }
 /*
@@ -853,6 +856,7 @@ static void task_stop(void)
 exit:
 	info.task.func = &task_default;
 	info.msg_lock = 0;
+	msg_free(&info.task.msg);
 	return;
 }
 /*

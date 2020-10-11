@@ -51,7 +51,7 @@ clean:
 	-@echo ' '
 
 post-build:
-	-cp -f webcam /home/ning/nfs-root/bin/webcam
+	-rm /home/ning/nfs-root/bin/webcam; cp -f webcam /home/ning/nfs-root/bin/webcam
 	-@echo ' '
 
 .PHONY: all clean dependents post-build
