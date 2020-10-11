@@ -35,10 +35,7 @@
 #include <miss.h>
 //program header
 #include "../../server/realtek/realtek_interface.h"
-#include "../../tools/cJSON/cJSON.h"
-#include "../../tools/json/json.h"
-#include "../../tools/log.h"
-#include "../../tools/misc.h"
+#include "../../tools/tools_interface.h"
 #include "../../server/miio/miio_interface.h"
 #include "../../server/miio/miio.h"
 #include "../../manager/manager_interface.h"
