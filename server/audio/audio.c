@@ -392,6 +392,7 @@ static int server_message_proc(void)
 			}
 			info.task.func = task_stop;
 			info.task.start = info.status;
+			msg_deep_copy(&info.task.msg, &msg);
 			info.msg_lock = 1;
 			break;
 		case MSG_MANAGER_EXIT:

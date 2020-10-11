@@ -739,6 +739,9 @@ static int server_message_proc(void)
 			info.msg_lock = 1;
 			break;
 		case MSG_VIDEO_STOP:
+			if( msg.sender == SERVER_MISS) misc_set_bit(&info.status2, RUN_MODE_SEND_MISS, 0);
+			if( msg.sender == SERVER_MICLOUD) misc_set_bit(&info.status2, RUN_MODE_SEND_MICLOUD, 0);
+			if( msg.sender == SERVER_RECORDER) misc_set_bit(&info.status2, RUN_MODE_SAVE, 0);
 			if( info.status != STATUS_RUN ) {
 				ret = send_miio_ack(&msg, &send_msg, MSG_VIDEO_STOP, msg.receiver, 0, 0, 0 );
 				break;
@@ -772,6 +775,7 @@ static int server_message_proc(void)
 					memcpy(&info.task.msg, &msg,sizeof(message_t));
 					info.msg_lock = 1;
 				}
+
 			}
 			break;
 		case MSG_VIDEO_CTRL_DIRECT:
@@ -882,6 +886,7 @@ exit:
 	para_set = 0;
 	info.task.func = &task_default;
 	info.msg_lock = 0;
+	msg_free(&info.task.msg);
 	return;
 }
 /*
@@ -930,6 +935,7 @@ exit:
 	para_set = 0;
 	info.task.func = &task_default;
 	info.msg_lock = 0;
+	msg_free(&info.task.msg);
 	return;
 }
 /*
@@ -961,6 +967,7 @@ static void task_start(void)
 exit:
 	info.task.func = &task_default;
 	info.msg_lock = 0;
+	msg_free(&info.task.msg);
 	return;
 }
 /*
@@ -988,6 +995,7 @@ static void task_stop(void)
 exit:
 	info.task.func = &task_default;
 	info.msg_lock = 0;
+	msg_free(&info.task.msg);
 	return;
 }
 /*
